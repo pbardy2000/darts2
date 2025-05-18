@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">Select players</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="/{{ Pages.HOME }}"
+    ></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  @if (unselectedPlayers().length) {
+    <ion-list lines="none">
+      @for (player of unselectedPlayers(); track player.uuid) {
+        <ion-item lines="none" (click)="selectPlayer(player)">
+          <ion-label>{{ $index + 1 }} .{{ player.name }}</ion-label>
+        </ion-item>
+      }
+    </ion-list>
+  } @else {
+    <ion-text color="primary">
+      <p>There are no players to select.</p>
+    </ion-text>
+  }
+</ion-content>

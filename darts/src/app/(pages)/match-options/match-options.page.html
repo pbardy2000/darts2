@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">Match Options</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="/{{ Pages.NEW_MATCH }}"
+    ></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="helpModal.present()">
+        <ion-icon name="help-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Help modal -->
+<ion-modal #helpModal>
+  <ng-template>
+    <div class="wrapper">
+      <h1>Match options</h1>
+    </div>
+  </ng-template>
+</ion-modal>
+
+<ion-content fullscreen>
+  <ion-item-group [formGroup]="form()">
+    <ion-item lines="none">
+      <ion-label slot="start">Game</ion-label>
+      <ion-select slot="end" formControlName="game">
+        @for (option of GAME_TYPES; track $index) {
+          <ion-select-option [value]="option.value">
+            {{ option.label }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start">Dartboard</ion-label>
+      <ion-select slot="end" formControlName="dartboard">
+        @for (option of DARTBOARDS; track $index) {
+          <ion-select-option [value]="option.value">
+            {{ option.label }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start">Type</ion-label>
+      <ion-select slot="end" formControlName="matchType">
+        @for (option of MATCH_TYPES; track $index) {
+          <ion-select-option [value]="option.value">
+            {{ option.label }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start">Legs</ion-label>
+      <ion-select slot="end" formControlName="legs">
+        @for (option of LEGS; track $index) {
+          <ion-select-option [value]="option.value">
+            {{ option.label }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start">Points</ion-label>
+      <ion-select slot="end" formControlName="points">
+        @for (option of POINTS; track $index) {
+          <ion-select-option [value]="option.value">
+            {{ option.label }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-toggle formControlName="doubleIn">Double in</ion-toggle>
+    </ion-item>
+  </ion-item-group>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button fill="solid" expand="full" (click)="cancel()">
+          Cancel
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="solid" expand="full" (click)="confirm()">
+          Confirm
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

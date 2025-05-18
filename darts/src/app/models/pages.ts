@@ -1,0 +1,17 @@
+export enum Pages {
+  HOME = 'home',
+  NEW_MATCH = 'new-match',
+  MATCH = 'matches/:matchId',
+  RESUME_MATCH = 'resume-match',
+  MANAGE_PLAYERS = 'players',
+  MANAGE_TEAMS = 'teams',
+  STATISTICS = 'statistics',
+  NEW_PLAYER = 'players/new',
+  EDIT_PLAYER = 'players/:playerId/edit',
+  INFORMATION = 'information',
+  PRIVACY_POLICY = 'privacy-policy',
+  AD_CONSENT = 'ad-consent',
+  HELP = 'help',
+  MATCH_OPTIONS = 'match-options',
+  SELECT_PLAYERS = 'select-players',
+}

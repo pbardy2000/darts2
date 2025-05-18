@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">Match</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="/{{ Pages.HOME }}"
+    ></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/{{ Pages.SELECT_PLAYERS }}">
+        <ion-icon name="person" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="people" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" fullscreen>
+  <app-match-settings></app-match-settings>
+  @if (selectedPlayers().length) {
+    <ion-list lines="none">
+      <ion-reorder-group
+        [disabled]="false"
+        (ionItemReorder)="reorderPlayers($event)"
+      >
+        @for (player of selectedPlayers(); track player.uuid) {
+          <ion-item-sliding>
+            <ion-item lines="none">
+              <ion-label>{{ $index + 1 }}. {{ player.name }}</ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+            <ion-item-options>
+              <ion-item-option color="danger" (click)="deselectPlayer(player)">
+                <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        }
+      </ion-reorder-group>
+    </ion-list>
+  } @else {
+    <ion-text color="primary">
+      <p>
+        There are no players selected. Select some players to start the match.
+      </p>
+    </ion-text>
+  }
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button fill="solid" expand="full" (click)="startMatch()">
+          START MATCH
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

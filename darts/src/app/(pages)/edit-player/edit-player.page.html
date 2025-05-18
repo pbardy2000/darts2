@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">Edit player</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="/{{ Pages.MANAGE_PLAYERS }}"
+    ></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="deletePlayer(player())">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="helpModal.present()">
+        <ion-icon name="help-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Help modal -->
+<ion-modal #helpModal>
+  <ng-template>
+    <div class="wrapper">
+      <h1>New player</h1>
+
+      <p>This screen is for creating, editing and deleting players.</p>
+
+      <p>
+        The nickname, if given, will be used on the scoreboard. It is also
+        needed to distinguish between players with identical names.
+      </p>
+
+      <ion-button expand="block" fill="outline" (click)="helpModal.dismiss()">
+        OK
+      </ion-button>
+    </div>
+  </ng-template>
+</ion-modal>
+
+<ion-content fullscreen>
+  <ion-item-group [formGroup]="form()">
+    <ion-item>
+      <ion-input placeholder="Name" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Nickname" formControlName="nickname"></ion-input>
+    </ion-item>
+  </ion-item-group>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button fill="solid" expand="full" (click)="cancel()">
+          Cancel
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="solid" expand="full" (click)="confirm()">
+          Confirm
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

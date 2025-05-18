@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">Darts Scoreboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" id="context-menu-trigger">
+        <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-popover
+        trigger="context-menu-trigger"
+        triggerAction="click"
+        dismissOnSelect
+      >
+        <ng-template>
+          <ion-content class="ion-no-padding">
+            <ion-list lines="none">
+              <ion-item routerLink="/{{ Pages.INFORMATION }}">
+                <ion-label>Information</ion-label>
+              </ion-item>
+              <ion-item routerLink="/{{ Pages.PRIVACY_POLICY }}">
+                <ion-label>Privacy policy</ion-label>
+              </ion-item>
+              <ion-item routerLink="/{{ Pages.AD_CONSENT }}">
+                <ion-label>Ad consent</ion-label>
+              </ion-item>
+              <ion-item routerLink="/{{ Pages.HELP }}">
+                <ion-label>Help</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" routerLink="/{{ Pages.NEW_MATCH }}">
+          <ion-icon name="add-circle"></ion-icon>
+          <ion-label>New match</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none" routerLink="/{{ Pages.RESUME_MATCH }}">
+          <ion-icon name="refresh-circle"></ion-icon>
+          <ion-label>Resume match</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" routerLink="/{{ Pages.MANAGE_PLAYERS }}">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>Manage players</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none" routerLink="/{{ Pages.MANAGE_TEAMS }}">
+          <ion-icon name="people"></ion-icon>
+          <ion-label>Manage teams</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" routerLink="/{{ Pages.STATISTICS }}">
+          <ion-icon name="bar-chart"></ion-icon>
+          <ion-label>Statistics</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
