@@ -12,12 +12,12 @@ export interface SelectedPlayersState extends EntityState<Orderable<Player>> {}
 
 export const selectedAdapter = createEntityAdapter<Orderable<Player>>({
   selectId: (player) => player.uuid,
-  sortComparer: (a, b) => (a.order < b.order ? -1 : 1),
+  sortComparer: (a, b) => a.order - b.order,
 });
 
 export const initialSelectedPlayersState: SelectedPlayersState =
   selectedAdapter.addMany(
-    mockPlayers.map((player, index) => ({ ...player, order: index + 1 })),
+    mockPlayers.map((player, order) => ({ ...player, order })),
     selectedAdapter.getInitialState(),
   );
 

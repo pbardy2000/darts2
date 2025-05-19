@@ -1,0 +1,48 @@
+@if (match(); as match) {
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <h3>{{ match.options.points }}</h3>
+        <h4>{{ match.options.matchType }} {{ match.options.legs }} legs</h4>
+      </ion-title>
+      <ion-back-button
+        slot="start"
+        defaultHref="/{{ Pages.HOME }}"
+      ></ion-back-button>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" id="context-menu-trigger">
+          <ion-icon name="document-text-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" id="context-menu-trigger">
+          <ion-icon name="share-social-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" id="context-menu-trigger">
+          <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content fullscreen>
+    @let round = match.sets[0][0][0];
+    <ion-grid class="ion-no-padding">
+      @for (entry of round.scores | keyvalue; track $index) {
+        @let score = entry.value;
+        <ion-row>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label slot="start">
+                {{ match.players[score.order].name }}
+              </ion-label>
+              <ion-label slot="end">{{ score.total }}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      }
+    </ion-grid>
+  </ion-content>
+
+  <ion-footer>
+    <app-keyboard (enter)="onEnter($event)"></app-keyboard>
+  </ion-footer>
+}

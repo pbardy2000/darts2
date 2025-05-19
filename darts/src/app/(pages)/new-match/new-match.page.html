@@ -30,7 +30,7 @@
         @for (player of selectedPlayers(); track player.uuid) {
           <ion-item-sliding>
             <ion-item lines="none">
-              <ion-label>{{ $index + 1 }}. {{ player.name }}</ion-label>
+              <ion-label>{{ player.order + 1 }}. {{ player.name }}</ion-label>
               <ion-reorder slot="end"></ion-reorder>
             </ion-item>
             <ion-item-options>

@@ -87,8 +87,22 @@ export type Match = {
   readonly createdAt: string;
   readonly updatedAt: string;
   readonly deletedAt: string | null;
+  readonly sets: Round[][][];
 };
 
 export type Round = {
   readonly uuid: string;
+  readonly set: number;
+  readonly leg: number;
+  readonly score: number | null;
+  readonly scorer: Player['uuid'] | null;
+  readonly scores: Record<
+    Player['uuid'],
+    {
+      readonly order: number;
+      readonly total: number;
+      readonly sets: number;
+      readonly legs: number;
+    }
+  >;
 };

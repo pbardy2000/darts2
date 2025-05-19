@@ -84,6 +84,7 @@ export class NewMatchPage {
 
     event.detail.complete();
 
+    console.log(list);
     this.store.dispatch(setAllSelectedPlayers({ players: list }));
   }
 

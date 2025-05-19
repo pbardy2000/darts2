@@ -1,5 +1,6 @@
 import type { Routes } from '@angular/router';
 import { Pages } from '@models/pages';
+import { canViewMatch } from '@store/match/match.guard';
 
 export const routes: Routes = [
   {
@@ -105,6 +106,7 @@ export const routes: Routes = [
   {
     path: Pages.MATCH,
     title: 'Match',
+    canActivate: [canViewMatch],
     loadComponent: () =>
       import('@pages/match/match.page').then((m) => m.MatchPage),
   },

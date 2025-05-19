@@ -4,12 +4,16 @@ import { addIcons } from 'ionicons';
 import {
   add,
   addCircle,
+  backspace,
   barChart,
+  documentTextOutline,
   ellipsisVertical,
   helpOutline,
   people,
   person,
   refreshCircle,
+  returnDownBack,
+  shareSocialOutline,
   trashOutline,
 } from 'ionicons/icons';
 
@@ -30,6 +34,10 @@ export class AppComponent {
       add,
       trashOutline,
       helpOutline,
+      documentTextOutline,
+      shareSocialOutline,
+      backspace,
+      returnDownBack,
     });
   }
 }

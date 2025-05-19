@@ -4,11 +4,9 @@ import {
   type MatchOptionsState,
   matchOptionsReducer,
 } from './match-options/match-options.reducer';
-import { MatchListEffects } from './match/list/match-list.effects';
 import { MatchEffects } from './match/match.effects';
 import { MATCH_KEY } from './match/match.key';
 import { matchReducer } from './match/match.reducer';
-import { RoundEffects } from './match/round/round.effects';
 import { PlayerEffects } from './player/player.effects';
 import { PLAYER_FEATURE_KEY } from './player/player.key';
 import { type PlayerState, playerReducer } from './player/player.reducer';
@@ -32,6 +30,4 @@ export const effects = [
   SelectedPlayerEffects,
   MatchEffects,
   MatchOptionsEffects,
-  RoundEffects,
-  MatchListEffects,
 ];
